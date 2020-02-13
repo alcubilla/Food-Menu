@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from "react";
+import Menu from "./components/Menu"
+import ShopCart from "./components/ShopCart";
+import productsData from "./components/productsData"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+class App extends Component
+{
+  constructor(){
+    super();
+    this.state ={
+      elemento : productsData
+    }
+  }
+
+  render(){
+    const productos = [this.state.elemento[0], this.state.elemento[1], this.state.elemento[2]];
+    return( 
+      <div className="container">
+        <div className="row">
+          <div className="col-8 "> 
+            <Menu info={productsData}/>
+          </div>     
+          <div className="col"> 
+            <ShopCart  info={productos.length} selecteds= {productos}/>
+          </div>
+        </div>
+      </div> 
+    ); 
+  
+  }
+
+
+
 }
 
 export default App;
